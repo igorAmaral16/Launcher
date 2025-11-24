@@ -1,0 +1,15 @@
+{
+    "name": "abr-launcher",
+    "version": "1.0.0",
+    "bin": "launcher.js",
+    "pkg": {
+        "targets": [
+            "node18-win-x64"
+        ],
+        "options": {
+            "win": {
+                "console": false
+            }
+        }
+    }
+}
