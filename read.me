@@ -1,0 +1,215 @@
+````markdown
+# ABR-TrackLoad Launcher
+
+## Índice
+- Visão Geral
+- Características Principais
+- Pré-requisitos
+- Instalação e Configuração
+- Como Utilizar
+- Menu de Opções
+- Funcionalidades Detalhadas
+- Solução de Problemas
+- Estrutura Técnica
+
+---
+
+## Visão Geral
+O ABR-TrackLoad Launcher é uma ferramenta de linha de comando em Node.js para gerenciar os serviços backend e frontend do sistema ABR-TrackLoad. Permite iniciar, parar e monitorar os serviços de forma centralizada e automatizada.
+
+---
+
+## Características Principais
+- **Gerenciamento Unificado**: Controle de backend e frontend em um único local  
+- **Encerramento Completo**: Garante finalização total de processos  
+- **Monitoramento em Tempo Real**: Exibe status, CPU e memória dos serviços  
+- **Prevenção de Conflitos**: Verificação e liberação automática de portas  
+- **Interface Interativa**: Menu simples e intuitivo  
+- **Reinicialização Rápida**: Restart completo do sistema com um comando  
+
+---
+
+## Pré-requisitos
+- Node.js versão 14 ou superior  
+- NPM (geralmente incluso com Node.js)  
+- Projeto ABR-TrackLoad nos diretórios:
+  - Backend: `C:\Users\supor\Documents\projetos\ABR-TrackLoad\backend`
+  - Frontend: `C:\Users\supor\Documents\projetos\ABR-TrackLoad\frontend`
+
+---
+
+## Instalação e Configuração
+
+### 1. Configuração de Diretórios
+No início do arquivo `launcher.js`, ajuste:
+
+```javascript
+const BACKEND_DIR = "SEU_CAMINHO_DO_BACKEND";
+const FRONTEND_DIR = "SEU_CAMINHO_DO_FRONTEND";
+const BACKEND_PORT = 5050;
+const FRONTEND_PORT = 5173;
+````
+
+### 2. Instalação de Dependências
+
+```bash
+npm install pidusage
+```
+
+### 3. Execução
+
+```bash
+node launcher.js
+```
+
+---
+
+## Como Utilizar
+
+### Inicialização
+
+Ao executar o launcher:
+
+* Verifica portas 5050 (backend) e 5173 (frontend)
+* Detecta processos conflitantes e sugere ações
+* Exibe o menu principal
+
+### Fluxo Básico
+
+* **Primeira execução**: opção 3 (Iniciar Ambos)
+* **Desenvolvimento**: opções 1 e 2 para serviços específicos
+* **Reinicialização**: opção 7 (restart completo)
+* **Encerramento**: opção 9 (sair limpo)
+
+---
+
+## Menu de Opções
+
+```
+==== ABR-TrackLoad Launcher ====
+
+[Backend] ativo  PID:1234
+  CPU: 2.5%   RAM: 45.3 MB
+
+[Frontend] ativo  PID:5678
+  CPU: 1.2%   RAM: 23.1 MB
+
+[Sistema] RAM: 4.2 GB / 8.0 GB
+
+[Opções]
+[1] Iniciar Backend
+[2] Iniciar Frontend
+[3] Iniciar Ambos
+[4] Parar Backend
+[5] Parar Frontend
+[6] Parar Ambos
+[7] Reiniciar Servidor
+[8] Refresh
+[9] Sair
+```
+
+---
+
+## Funcionalidades Detalhadas
+
+### 1. Iniciar Backend
+
+* Checa se a porta 5050 está ocupada
+* Mata processos conflitantes automaticamente
+* Executa `node server.js` no diretório do backend
+* Aguarda binding da porta e atualiza status
+
+### 2. Iniciar Frontend
+
+* Checa se a porta 5173 está ocupada
+* Mata processos Vite/Node conflitantes
+* Executa `npm run dev` no diretório do frontend
+* Monitora inicialização do servidor de desenvolvimento
+
+### 3. Parada de Serviços
+
+* Sinal inicial SIGTERM
+* SIGKILL se necessário
+* Limpeza completa de processos por porta e nome
+* Confirma liberação das portas
+
+### 4. Reinicialização
+
+* Para todos os serviços
+* Remove processos residuais
+* Inicia serviços do zero
+* Feedback visual durante o processo
+
+---
+
+## Solução de Problemas
+
+### Portas Ocupadas
+
+* Exemplo: `Backend 5050: OCUPADA (PIDs: 1234, 5678)`
+* Ações:
+
+  * `k`: mata processos e continua
+  * `m`: mantém processos (não inicia novo)
+  * `e`: sai do launcher
+
+### Processos que Não Morrem
+
+* Kill por PID
+* Kill por nome
+* Kill de árvore de processos
+* Tentativas múltiplas
+
+### Logs de Erro
+
+* Backend: `[BACKEND]`
+* Frontend: `[FRONTEND]`
+* Sistema: mensagens do launcher
+
+---
+
+## Estrutura Técnica
+
+### Arquitetura
+
+```
+launcher.js
+├── Configurações (portas, diretórios)
+├── Gerenciamento de Processos
+│   ├── spawn() para execução
+│   ├── killPidTree() para encerramento
+│   └── waitForPortFree() para verificação
+├── Monitoramento
+│   ├── getStatsForPid() para métricas
+│   └── renderStatus() para display
+└── Interface
+    ├── Menu interativo
+    └── Fluxos de operação
+```
+
+### Comandos do Sistema
+
+* Windows: `taskkill`, `netstat`, `wmic`
+* Unix: `pkill`, `lsof`, `ss`, `ps`
+
+### Timeouts Configuráveis
+
+```javascript
+const WAIT_AFTER_KILL_MS = 1500;    // Espera após matar processo
+const WAIT_AFTER_START_MS = 1200;   // Espera após iniciar
+const GRACEFUL_WAIT_MS = 2000;      // Tempo para shutdown gracioso
+const MAX_KILL_ATTEMPTS = 5;        // Tentativas de kill
+```
+
+### Notas Importantes
+
+* Não cria janelas adicionais (`windowsHide: true`)
+* Processos executados no contexto do usuário atual
+* Permissões de sistema podem ser necessárias para kill de processos
+* Monitoramento de recursos em tempo real
+* Atualização rápida do status (opção 8)
+* Limpeza eficiente de memória
+* Ideal para ambiente de desenvolvimento e testes
+
+```
+```
