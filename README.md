@@ -21,7 +21,7 @@ O ABR-TrackLoad Launcher é uma ferramenta de linha de comando em Node.js para g
 
 * Node.js v14+
 * npm (incluído com Node.js)
-* Projeto ABR-TrackLoad nas pastas:
+* Projeto ABR-TrackLoad nas pastas (ou o seu projeto em react.js com npm run dev & node.js com node server.js):
 
   * Backend: `C:\Users\supor\Documents\projetos\ABR-TrackLoad\backend`
   * Frontend: `C:\Users\supor\Documents\projetos\ABR-TrackLoad\frontend`
@@ -41,6 +41,8 @@ const BACKEND_PORT = 5050;
 const FRONTEND_PORT = 5173;
 ```
 
+Essas portas são opcionais e escolhidas para exemplo, utilize as suas respectivas portas conforme seu frontend e seu backend.
+
 ### 2. Dependência opcional (melhor medição de CPU)
 
 Instale `pidusage` se quiser métricas de CPU mais precisas (opcional):
@@ -56,6 +58,12 @@ No diretório onde está `launcher.js`:
 ```bash
 node launcher.js
 ```
+
+Ou para criar o executável (deve estar dentro da pasta do launcher):
+```bash
+pkg .
+```
+ 
 
 Recomenda-se abrir o CMD como Administrador para garantir que comandos de kill funcionem em serviços do sistema.
 
@@ -76,7 +84,7 @@ Ao executar o launcher:
 * Primeira execução: escolha **Iniciar Ambos** (opção 3)
 * Desenvolvimento: use **Iniciar Backend** (1) ou **Iniciar Frontend** (2) conforme necessidade
 * Reiniciar serviços: use **Reiniciar Servidor** (7)
-* Sair: use **Sair** (9) e escolha se deseja matar processos remanescentes
+* Sair: use **Sair** (9) e mate os processos remanescentes
 
 ---
 
@@ -141,8 +149,7 @@ Ao executar o launcher:
 
 ### Sair (opção 9)
 
-* Pergunta se deve matar processos nas portas antes de encerrar o launcher
-* Se confirmar, mata todos os processos detectados nas portas e encerra o launcher
+* Mata todos os processos detectados nas portas e encerra o launcher
 
 ---
 
