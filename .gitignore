@@ -1,0 +1,138 @@
+###############################
+# NODE / GENERAL
+###############################
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+.pnpm-debug.log*
+
+###############################
+# BUILD & CACHE
+###############################
+dist/
+build/
+.vite/
+.cache/
+temp/
+tmp/
+*.cache
+*.temp
+*.tmp
+*.bak
+*.old
+
+# Vite PWA (arquivos gerados)
+dev-dist/
+sw.js
+workbox-*.js
+
+###############################
+# ENVIRONMENT FILES
+###############################
+.env
+.env.*
+!*.example
+
+###############################
+# LOGS
+###############################
+*.log
+logs/
+*.log.*
+debug.log
+
+###############################
+# SSL / CERTIFICATES / MKCERT
+###############################
+*.pem
+*.crt
+*.key
+*.pfx
+*.csr
+*.der
+*.cer
+certs/
+ssl/
+mkcert/
+*.pem.old
+*.key.old
+
+###############################
+# STATIC GENERATED FILES
+###############################
+*.generated.*
+*.min.*
+
+###############################
+# EDITORS & IDEs
+###############################
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.swp
+*.swo
+
+###############################
+# OS FILES
+###############################
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+desktop.ini
+
+###############################
+# TESTS & COVERAGE
+###############################
+coverage/
+*.lcov
+jest-html-reporters-*.html
+
+###############################
+# GIT / CI / DEPLOY
+###############################
+.vercel/
+.netlify/
+firebase-debug.log
+functions/node_modules/
+serve/
+docker/
+docker-compose.override.yml
+
+###############################
+# PUBLIC UPLOADS / TEMP STORAGE
+###############################
+uploads/
+uploads_tmp/
+*.uploaded
+*.partial
+
+###############################
+# FRONTEND SPECIFIC
+###############################
+*.map
+*.gz
+*.br
+
+###############################
+# BACKEND SPECIFIC
+###############################
+*.pid
+*.seed
+*.tar
+*.tar.gz
+*.sqlite
+*.sqlite3
+
+###############################
+# OPTIONAL (DESCOMENTE SE USAR)
+###############################
+# .env.local
+# .env.development.local
+# .env.production.local
+# .env.test.local
+
