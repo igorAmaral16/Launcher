@@ -1,21 +1,5 @@
 # ABR-TrackLoad Launcher
 
-## Índice
-
-* Visão Geral
-* Características principais
-* Pré-requisitos
-* Instalação e configuração
-* Como usar
-* Menu de opções
-* Funcionalidades detalhadas
-* Solução de problemas
-* Estrutura técnica
-* Timeouts configuráveis
-* Notas importantes
-
----
-
 ## Visão Geral
 
 O ABR-TrackLoad Launcher é uma ferramenta de linha de comando em Node.js para gerenciar os serviços backend e frontend do sistema ABR-TrackLoad. Permite iniciar, parar, reiniciar e monitorar os serviços de forma centralizada, garantindo encerramento completo de processos e liberação de portas.
