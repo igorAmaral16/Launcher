@@ -4,10 +4,10 @@ const os = require('os');
 const path = require('path');
 const fs = require('fs');
 
-const BACKEND_DIR = "C:\\Users\\supor\\Documents\\projetos\\Varredor-Recursivo-de-Arquivos\\backend";
-const FRONTEND_DIR = "C:\\Users\\supor\\Documents\\projetos\\Varredor-Recursivo-de-Arquivos\\frontend";
-const BACKEND_PORT = 5051;
-const FRONTEND_PORT = 5174;
+const BACKEND_DIR = "C:\\Users\\supor\\Documents\\projetos\\ABR-Trackload\\backend";
+const FRONTEND_DIR = "C:\\Users\\supor\\Documents\\projetos\\ABR-Trackload\\frontend";
+const BACKEND_PORT = 5050;
+const FRONTEND_PORT = 5173;
 
 const WAIT_AFTER_KILL_MS = 1500;
 const WAIT_AFTER_START_MS = 1200;
@@ -273,7 +273,7 @@ async function stopSpawned(procName) {
 
 async function renderStatus() {
     console.clear();
-    console.log('==== ABR-Varredor de Arquivos ====\n');
+    console.log('==== ABR-Trackload ====\n');
 
     const backPid = safePid(backendProc);
     const frontPid = safePid(frontendProc);
